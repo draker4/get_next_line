@@ -6,34 +6,11 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:40:11 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/16 12:05:08 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/16 15:51:12 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-char	*ft_next_line_in_buf(char *buf)
-{
-	int		i;
-	char	*copy;
-
-	i = 0;
-	while (buf[i] && buf[i] != '\n')
-		i++;
-	copy = malloc(sizeof(char) * (i + 1));
-	if (!copy)
-		return (NULL);
-	i = 0;
-	while (buf[i] && buf[i] != '\n')
-	{
-		copy[i] = buf[i];
-		i++;
-	}
-	copy[i++] = '\n';
-	copy[i] = '\0';
-	ft_initialize(buf, i);
-	return (copy);
-}
 
 char	*ft_cut_buf(char *str, char *buf)
 {
