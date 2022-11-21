@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:42:31 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/16 12:04:32 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/21 15:28:35 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ char	*ft_cat_char(char *str, char c)
 	char	*copy;
 	int		i;
 
-	i = 0;
+	i = -1;
 	if (!str)
 	{
-		copy = malloc(sizeof(char) * 2);
+		copy = malloc(sizeof(char) * (2 + ++i));
 		if (!copy)
 			return (NULL);
 	}
@@ -71,16 +71,16 @@ char	*ft_cat_char(char *str, char c)
 	{
 		copy = malloc(sizeof(char) * ((int)ft_strlen(str) + 2));
 		if (!copy)
-			return (NULL);
-		while (str[i])
 		{
-			copy[i] = str[i];
-			i++;
+			free(str);
+			return (NULL);
 		}
+		while (str[++i])
+			copy[i] = str[i];
 		free(str);
 	}
-	copy[i++] = c;
-	copy[i] = '\0';
+	copy[i] = c;
+	copy[++i] = '\0';
 	return (copy);
 }
 
